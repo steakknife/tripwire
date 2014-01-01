@@ -34,10 +34,8 @@
 
 ## Uninstallation (run with sudo or su)
 
-    ```
     launchctl unload -w /Library/LaunchDaemons/org.tripwire.TripWire.plist
     rm -f /Library/LaunchDaemons/org.tripwire.TripWire.plist
     TRIPWIRE_ROOT/sbin/tripwire_uninstall
     # or remove everything: TRIPWIRE_ROOT/sbin/tripwire_uninstall -A 
-    ```
 
