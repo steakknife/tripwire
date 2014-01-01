@@ -886,8 +886,8 @@ void cLockedTemporaryFileArchive::OpenReadWrite( const TCHAR* filename, uint32 o
         catch( eFSServices& e)
           {
             TSTRING errStr = TSS_GetString( cCore, core::STR_BAD_TEMPDIRECTORY );
-            eArchiveOpen e(strTempFile, errStr);
-            throw e;
+            eArchiveOpen e2(strTempFile, errStr);
+            throw e2;
           }
       }
     ///////////////////////////////////////////////////////////////////////////////
