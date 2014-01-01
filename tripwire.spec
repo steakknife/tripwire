@@ -2,7 +2,7 @@
 %define		path_to_sendmail /usr/sbin/sendmail
 
 Name:		tripwire
-Version:	2.4.2.2
+Version:	2.4.2.3
 Release:	1%{?dist}
 Summary:	IDS (Intrusion Detection System)
 
@@ -144,6 +144,9 @@ post
 
 
 %changelog
+* Wed Jan 01 2014 Barry Allard <barry.allard@gmail.com> 2.4.2.3
+- Fixed compiling issues on Clang and GCC
+
 * Mon Nov 21 2011 Stephane Dudzinski <tripwire@frlinux.net> 2.4.2.2
 - Updated spec file
 - Updated version revision in reports and all

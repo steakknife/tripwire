@@ -5,12 +5,7 @@
 set -e
 
 PRODUCT=tripwire
-VERSION=2.4.2.2
-PLATFORM=`platform`
-ARCH=`arch $PLATFORM`
-TYPE=bin
-ROOT_DIR=$PRODUCT-$VERSION-$PLATFORM-$ARCH-$TYPE
-EXCLUDES='.svn .git .gitignore'
+VERSION=2.4.2.3
 
 platform() {
   case `uname` in
@@ -34,6 +29,13 @@ arch() {
     *) echo 'unknown'
   esac
 }
+
+PLATFORM=$(platform)
+ARCH=$(arch $PLATFORM)
+TYPE=bin
+ROOT_DIR=$PRODUCT-$VERSION-$PLATFORM-$ARCH-$TYPE
+EXCLUDES='.svn .git .gitignore'
+
 
 
 EXCLUDES="$(for EXCLUDE in $EXCLUDES; do echo --exclude $EXCLUDE; done)"

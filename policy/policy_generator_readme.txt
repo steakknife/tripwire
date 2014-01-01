@@ -1,4 +1,4 @@
-* Tripwire 2.4.2.2 Policy Generator README
+* Tripwire 2.4.2.3 Policy Generator README
 
 This readme is a quick guide on something introduced in this version 
 of Tripwire: the Policy Generator. The idea behind is to generate a 

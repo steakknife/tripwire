@@ -1,3 +1,8 @@
+2014-01-01 Barry Allard <barry.allard@gmail.com>
+
+	* Bumping version to 2.4.2.3
+	* Fixed compilation on clang and gcc compilers
+
 2011-11-21 Stephane Dudzinski <tripwire@frlinux.net>
 
 	* Bumping version to 2.4.2.2
