@@ -18,20 +18,26 @@
 
 5. Run the following commands as root:
 
+    ```
     TRIPWIRE_ROOT/sbin/tripwire_set_site_and_local_passphrases
     TRIPWIRE_ROOT/sbin/tripwire_update_config_file # twcfg.txt -> tw.cfg
     TRIPWIRE_ROOT/sbin/tripwire_update_policy_file # twpol.txt -> tw.pol
     TRIPWIRE_ROOT/sbin/tripwire --init             # this creates a new encrypted database
+    ```
 
 6. Enable periodic jobs (run as root): 
 
+    ```
     launchctl load -w /Library/LaunchDaemons/org.tripwire.TripWire.plist
+    ```
 
 
 ## Uninstallation (run with sudo or su)
 
-     launchctl unload -w /Library/LaunchDaemons/org.tripwire.TripWire.plist
-     rm -f /Library/LaunchDaemons/org.tripwire.TripWire.plist
-     TRIPWIRE_ROOT/sbin/tripwire_uninstall
-     # or remove everything: TRIPWIRE_ROOT/sbin/tripwire_uninstall -A 
+    ```
+    launchctl unload -w /Library/LaunchDaemons/org.tripwire.TripWire.plist
+    rm -f /Library/LaunchDaemons/org.tripwire.TripWire.plist
+    TRIPWIRE_ROOT/sbin/tripwire_uninstall
+    # or remove everything: TRIPWIRE_ROOT/sbin/tripwire_uninstall -A 
+    ```
 
