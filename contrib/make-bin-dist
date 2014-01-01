@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #
 # A very cheesy script to prep a release
 #
@@ -8,14 +8,45 @@ VERSION=2.4.2.2
 ARCH=x86
 TYPE=bin
 ROOT_DIR=$PRODUCT-$VERSION-$ARCH-$TYPE
-EXCLUDES=.svn
+EXCLUDES='.svn .git .gitignore'
 
 mkdir $ROOT_DIR
 ln -s ../bin ../contrib ../man ../policy $ROOT_DIR/
 ln -s ../COPYING ../ChangeLog ../INSTALL ../MAINTAINERS $ROOT_DIR/
 ln -s ../TRADEMARK ../COMMERCIAL ../install ../install-sh $ROOT_DIR/
 
-tar jhcf $ROOT_DIR.tar.bz2 $ROOT_DIR --exclude $EXCLUDES
+EXTENSIONS=(.tar.bz2 .tar.gz .tar.xz)
+TAR_OPTIONS=(j z J)
 
-sha1sum $ROOT_DIR.tar.bz2 > $ROOT_DIR.sha1
-sha1sum bin/* >> $ROOT_DIR.sha1
+sha1() {
+  sha1sum "$@" || shasum "$@"
+}
+
+sha512() {
+  sha512sum "$@" || shasum -a 512 "$@"
+}
+
+sign() {
+  gpg --detach-sign --output "$1.asc" "$1"
+}
+
+for INDEX in 1 2 3; do
+  EXTENSION="${EXTENSIONS[$INDEX]}"
+  TAR_OPTIONS="${TAR_OPTIONS[$INDEX]}"
+  TARBALL="$ROOT_DIR.${EXTENSION}"
+
+  tar ${TAR_OPTIONS}hcf $TARBALL $ROOT_DIR --exclude $EXCLUDES
+
+  sha1 $TARBALL > $ROOT_DIR.sha1
+  sha1 bin/* >> $ROOT_DIR.sha1
+
+  sha512 $TARBALL > $ROOT_DIR.sha512
+  sha512 bin/* >> $ROOT_DIR.sha512
+
+  # sign the tarball
+  sign $TARBALL
+
+  # sign the hashes
+  sign $ROOT_DIR.sha1
+  sign $ROOT_DIR.sha512
+done
