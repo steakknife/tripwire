@@ -32,4 +32,4 @@ for ETC_FILE_SAMPLE in tw*.txt.sample; do
   "$GENERATE_FROM_TEMPLATE" $ETC_FILE_SAMPLE "$TRIPWIRE_ETC_DIR/$ETC_FILE" "$TRIPWIRE_ROOT" "$TRIPWIRE_ETC_DIR" "$TRIPWIRE_DB_DIR" "$TRIPWIRE_LOG_DIR"
 done
 
-"$GENERATE_FROM_TEMPLATE" org.tripwire.TripWire.plist /Library/LaunchDaemons/org.tripwire.TripWire.plist "$TRIPWIRE_ROOT" "$TRIPWIRE_ETC_DIR" "$TRIPWIRE_DB_DIR" "$TRIPWIRE_LOG_DIR"
+"$GENERATE_FROM_TEMPLATE" org.tripwire.Tripwire.plist /Library/LaunchDaemons/org.tripwire.Tripwire.plist "$TRIPWIRE_ROOT" "$TRIPWIRE_ETC_DIR" "$TRIPWIRE_DB_DIR" "$TRIPWIRE_LOG_DIR"

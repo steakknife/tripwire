@@ -1,4 +1,4 @@
-# TripWire open-source
+# Tripwire open-source
 
 ## Build release from source
 

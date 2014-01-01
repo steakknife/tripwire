@@ -28,14 +28,14 @@
 6. Enable periodic jobs (run as root): 
 
     ```
-    launchctl load -w /Library/LaunchDaemons/org.tripwire.TripWire.plist
+    launchctl load -w /Library/LaunchDaemons/org.tripwire.Tripwire.plist
     ```
 
 
 ## Uninstallation (run with sudo or su)
 
-    launchctl unload -w /Library/LaunchDaemons/org.tripwire.TripWire.plist
-    rm -f /Library/LaunchDaemons/org.tripwire.TripWire.plist
+    launchctl unload -w /Library/LaunchDaemons/org.tripwire.Tripwire.plist
+    rm -f /Library/LaunchDaemons/org.tripwire.Tripwire.plist
     TRIPWIRE_ROOT/sbin/tripwire_uninstall
     # or remove everything: TRIPWIRE_ROOT/sbin/tripwire_uninstall -A 
 

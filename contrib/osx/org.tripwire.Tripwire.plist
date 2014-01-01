@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>org.tripwire.TripWireIntegrityCheck</string>
+  <string>org.tripwire.Tripwire</string>
   <key>Nice</key>
   <integer>5</integer>
   <key>ProgramArguments</key>
