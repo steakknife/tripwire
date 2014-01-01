@@ -1,7 +1,13 @@
 stamp-h1
 config.h
+config.h.in~
+config.sub
 config.log
 config.status
+aclocal.m4
+compile
+autom4te.cache/
+**/*.in
 **/Makefile
 **/*.o
 **/*.dylib
