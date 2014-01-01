@@ -34,6 +34,7 @@ PLATFORM=$(platform)
 ARCH=$(arch $PLATFORM)
 TYPE=bin
 ROOT_DIR=$PRODUCT-$VERSION-$PLATFORM-$ARCH-$TYPE
+FILES='bin contrib man policy COPYING ChangeLog MAINTAINERS TRADEMARK COMMERCIAL README.md install install-sh'
 EXCLUDES='.svn .git .gitignore'
 
 
@@ -53,19 +54,19 @@ trap 'RESULT=$?; rm -rf "$SCRIPT_DIR_DOTDOT/releases/$ROOT_DIR"; exit $RESULT' I
 mkdir -p "$SCRIPT_DIR_DOTDOT/releases"
 cd "$SCRIPT_DIR_DOTDOT/releases"
 mkdir "$ROOT_DIR"
-ln -s ../bin ../contrib ../man ../policy $ROOT_DIR/
-ln -s ../COPYING ../ChangeLog ../MAINTAINERS $ROOT_DIR/
-ln -s ../TRADEMARK ../COMMERCIAL ../install ../install-sh $ROOT_DIR/
+for FILE in $FILES; do
+  cp -a "../$FILE" "$ROOT_DIR"
+done
 
 EXTENSIONS=(tar.bz2 tar.gz tar.xz)
 TAR_OPTIONS=(j z J)
 
 sha1() {
-  sha1sum "$@" || shasum "$@"
+  sha1sum "$1" || shasum "$1"
 }
 
 sha512() {
-  sha512sum "$@" || shasum -a 512 "$@"
+  sha512sum "$1" || shasum -a 512 "$1"
 }
 
 sign() {
@@ -85,10 +86,12 @@ for INDEX in 1 2 3; do
   tar $EXCLUDES -${TAR_OPTIONS}hcf $TARBALL $ROOT_DIR
 
   sha1 $TARBALL > $ROOT_DIR.sha1
-  sha1 bin/* >> $ROOT_DIR.sha1
-
   sha512 $TARBALL > $ROOT_DIR.sha512
-  sha512 bin/* >> $ROOT_DIR.sha512
+  (cd $ROOT_DIR &&
+   for BIN in bin/*; do
+     sha1 "$BIN" >> ../$ROOT_DIR.sha1
+     sha512 "$BIN" >> ../$ROOT_DIR.sha512
+   done)
 
   # sign the tarball
   sign $TARBALL
