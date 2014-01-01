@@ -1,4 +1,4 @@
 #!/bin/sh
-test -e Makefile && make clean
 git clean -dff
 git clean -Xff
+rm -rf autom4te.cache
