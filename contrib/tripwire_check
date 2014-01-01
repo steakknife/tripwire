@@ -6,9 +6,9 @@
 #  Contributed by Timothy K Ewing <Timothy.Ewing@celera.com>
 #
 HOST_NAME=`uname -n`
-TWCFG_PATH=/usr/local/etc
-TWDB_PATH=/usr/local/lib/tripwire
-TWROOT_PATH=/usr/local/sbin
+TWCFG_PATH=TRIPWIRE_ETC_DIR
+TWDB_PATH=TRIPWIRE_DB_DIR
+TWROOT_PATH=TRIPWIRE_ROOT
 MAILTO="root"		# Email addresses that should recieve reports
 
 #
