@@ -1,4 +1,4 @@
 #!/bin/sh
 test -e Makefile && make clean
-git reset -dff
-git reset -Xff
+git clean -dff
+git clean -Xff
