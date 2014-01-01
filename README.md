@@ -42,7 +42,7 @@ TODO: brew formula
 ```shell
 brew install openssl m4 libtool autoconf automake
 ./autogen.sh
-./configure --disable-dependency-tracking --disable-debug --with-ssl-dir=/usr/local
+./configure CXXFLAGS='-stdlib=libstdc++' --disable-dependency-tracking --disable-debug --with-ssl-dir=/usr/local
 make
 ```
 
