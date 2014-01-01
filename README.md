@@ -35,6 +35,9 @@ brew install openssl m4 libtool autoconf automake
 make
 ```
 
+## Cleanup between builds
+
+    ./clean
 
 ## Tested platforms
 
