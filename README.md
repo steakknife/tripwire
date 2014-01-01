@@ -2,6 +2,17 @@
 
 ## Build release from source
 
+### Generic
+
+Install C & C++ compiler, make, m4, autoconf, automake, libtool and OpenSSL
+
+```shell
+./autogen.sh
+./configure
+make
+```
+
+
 ### Ubuntu
 
 ```shell
@@ -34,6 +45,7 @@ brew install openssl m4 libtool autoconf automake
 ./configure --disable-dependency-tracking --disable-debug --with-ssl-dir=/usr/local
 make
 ```
+
 
 ## Cleanup between builds
 
