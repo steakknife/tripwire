@@ -8,7 +8,7 @@ set -e
 
 ## start config -- edits okay here 
 TRIPWIRE_ROOT="${TRIPWIRE_ROOT-/usr/local}"
-TRIPWIRE_ETC_DIR="${TRIPWIRE_ETC_DIR_/etc}"
+TRIPWIRE_ETC_DIR="${TRIPWIRE_ETC_DIR-/etc}"
 TRIPWIRE_DB_DIR="${TRIPWIRE_DB_DIR-/var/db/tripwire}"
 TRIPWIRE_LOG_DIR="${TRIPWIRE_LOG_DIR-/var/log/tripwire}"
 ## end config -- dont edit past here
